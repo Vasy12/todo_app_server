@@ -2,3 +2,6 @@
 .*
 #exept .gitignore file
 !.gitignore
+
+
+**/node_modules/

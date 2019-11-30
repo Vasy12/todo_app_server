@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Caveat:400,700&display=swap&subset=cyrillic" rel="stylesheet">
+</head>
+<body>
+
+<div class="container appContainer">
+    <header class="appHeader">
+        <h1>to do list</h1>
+    </header>
+    <!--
+        ==================FORM==========================
+    -->
+    <div class="formContainer">
+        <input id="taskInput" type="text" class="taskInput taskFont">
+        <div id="addTaskButton" class="button  flexItemButton">add</div>
+        <div id="resetInputButton" class="button  flexItemButton">reset</div>
+    </div>
+    <!--
+         ==================LIST==========================
+    -->
+    <ul id="tasksList">
+
+
+        <!--
+            ==================TASK ITEM==========================
+         -->
+        <li id="1" class="taskContainer">
+
+            <label class="checkMarkContainer">
+                <input type="checkbox">
+                <img src="assets/img/icons/check.png" alt="X">
+            </label>
+
+            <div class="taskValueWrapper">
+                <div class="taskText" title="Task task task task task">Task task task Taskk task taskTask task task Taskk task taskTask task task Taskk task taskTask task task Taskk task taskTask task task Taskk task taskTask task task Taskk task taskTask task task Taskk task task</div>
+            </div>
+
+            <div class="deleteTaskButton">
+                <img src="./assets/img/icons/delete-forever.png" alt="delete">
+            </div>
+        </li>
+
+    </ul>
+</div>
+
+<script type="module" src="assets/js/controls/index.js"></script>
+<script type="module" src="assets/js/task/checkbox/index.js"></script>
+<script type="module" src="assets/js/task/text/index.js"></script>
+<script type="module" src="assets/js/task/index.js"></script>
+<script type="module" src="assets/js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,253 @@
+@import "reset.css";
+
+:root {
+    --error-color: #D32F2F;
+    --main-bg-color: #eeeeee;
+    --theme-color: #444444;
+    counter-reset: task;
+}
+
+body {
+    font-family: 'Caveat', cursive;
+    background-color: var(--main-bg-color);
+    color: var(--theme-color);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.taskFont {
+    font-size: 30px;
+}
+
+input {
+    font-family: inherit;
+
+}
+
+.container {
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+
+.appHeader {
+    padding: 15px 0 30px;
+    font-size: 6vmax;
+    font-weight: bold;
+}
+
+.appHeader h1 {
+    text-align: center;
+    text-transform: capitalize;
+}
+
+
+/*
+-------CONTAINER
+*/
+.appContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-height: 100vh;
+    border: 30px solid var(--theme-color);
+    padding: 20px 20px 0;
+}
+
+
+/*
+-------FORM
+*/
+
+.formContainer {
+    display: flex;
+    padding: 10px 0;
+}
+
+.formContainer > * + * {
+    margin-left: 10px;
+}
+
+#taskInput {
+    flex-grow: 1;
+    padding: 4px 10px;
+    border-style: solid;
+    border-color: var(--theme-color);
+    border-radius: 4px;
+    border-width: 2px;
+    box-sizing: border-box;
+}
+
+.taskInput {
+
+    flex: 1;
+}
+
+#taskInput:focus {
+    border-width: 4px;
+
+
+}
+
+/*
+-------BUTTON
+*/
+
+
+.button {
+    padding: 10px;
+    text-align: center;
+    font-size: 30px;
+    color: var(--theme-color);
+    border: 4px solid var(--theme-color);
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: var(--theme-color);
+    color: var(--main-bg-color);
+}
+
+.button > * {
+    vertical-align: center;
+}
+
+.flexItemButton {
+    flex-grow: 0.2;
+    flex-basis: 70px;
+    max-width: 140px;
+}
+
+
+/*
+-------TASK LIST
+*/
+#tasksList {
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/*
+-------TASK
+*/
+
+.taskContainer {
+
+    counter-increment: task;
+    display: flex;
+    padding: 10px 0;
+    margin: 10px 0;
+    font-size: 30px;
+    align-items: flex-end;
+
+}
+
+.taskContainer:hover {
+    box-shadow: 0 0 4px -2px var(--theme-color);
+
+}
+
+.checkMarkContainer {
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+    min-width: 40px;
+    border: 4px solid var(--theme-color);
+    cursor: pointer;
+    position: relative;
+
+}
+
+.checkMarkContainer:hover {
+
+    background-color: rgba(0, 0, 0, 0.1);
+
+}
+
+.checkMarkContainer input {
+    display: none;
+}
+
+.checkMarkContainer img {
+    position: absolute;
+    height: 70px;
+    left: 60%;
+    top: 20%;
+    transform: translate(-40%, -50%);
+    display: none;
+
+}
+
+.checkMarkContainer input:checked + img {
+    display: block;
+
+}
+
+.taskValue {
+    width: 100%;
+}
+
+
+.doneTask {
+    text-decoration: line-through;
+    color: var(--error-color);
+}
+
+.taskText::before {
+    margin-left: 10px;
+    content: "#" counter(task) ". ";
+}
+
+.taskText {
+    color: var(--theme-color);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    position: relative;
+    z-index: 100;
+
+}
+
+.taskValueWrapper {
+    flex-grow: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 2px solid var(--theme-color);
+    padding-bottom: 10px;
+    margin: 0 10px;
+    box-sizing: border-box;
+}
+
+
+.deleteTaskButton {
+    margin-left: auto;
+    flex-basis: 60px;
+    min-width: 60px;
+    height: 60px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+
+
+.deleteTaskButton > img {
+    width: inherit;
+    height: inherit;
+    object-fit: contain;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+}
