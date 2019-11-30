@@ -2,6 +2,6 @@
 .*
 #exept .gitignore file
 !.gitignore
-
-
+!.doker*
+data/
 **/node_modules/
