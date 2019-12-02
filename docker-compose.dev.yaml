@@ -1,4 +1,4 @@
-version: "3"
+version: "3.7"
 
 services:
   server-dev:
@@ -6,7 +6,11 @@ services:
       context: ./server
       dockerfile: Dockerfile.dev
     environment:
-      NODE_ENV: develop
+      NODE_ENV: development
+      TODO_DB_USERNAME: postgres
+      TODO_DB_PASSWORD: postgres
+      TODO_DB_NAME: todo-dev
+      TODO_DB_HOST: db-dev
     ports:
     - "3000:3000"
     depends_on:
@@ -15,13 +19,14 @@ services:
       - ./server:/server
       - /server/node_modules
   db-dev:
-    image: "postgres:latest"
+    image: postgres:10
     environment:
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=user
-      - POSTGRES_DB=todo-dev
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: user
+      POSTGRES_DB: todo-dev
     ports:
     - "5432:5432"
     volumes:
-    - ./data/db:/var/lib/postgresql/data
+    - ./data/db_dev:/var/lib/postgresql/data
+
 
