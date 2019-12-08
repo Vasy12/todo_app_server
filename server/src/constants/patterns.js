@@ -1,0 +1,1 @@
+export const TASK_VALUE =  /(?!^\s*$)^.*$/;

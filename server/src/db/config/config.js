@@ -9,17 +9,17 @@ module.exports = {
 		dialect: "postgres"
 	},
 	test: {
-		username: process.env.TODO_DB_USER,
-		password: process.env.TODO_DB_PASSWORD,
-		database: process.env.TODO_DB_PASSWORD,
-		host: process.env.TODO_DB_HOST,
+		username: "postgres",
+		password: "postgres",
+		database: "todo-test",
+		host: "db-test",
 		dialect: "postgres"
 	},
 	production: {
-		username: process.env.TODO_DB_USER,
-		password: process.env.TODO_DB_PASSWORD,
-		database: process.env.TODO_DB_PASSWORD,
-		host: process.env.TODO_DB_HOST,
+		username: "postgres",
+		password: "postgres",
+		database: "todo",
+		host: "db",
 		dialect: "postgres"
 	}
 };

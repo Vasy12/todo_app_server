@@ -7,10 +7,6 @@ services:
       dockerfile: Dockerfile.dev
     environment:
       NODE_ENV: development
-      TODO_DB_USERNAME: postgres
-      TODO_DB_PASSWORD: postgres
-      TODO_DB_NAME: todo-dev
-      TODO_DB_HOST: db-dev
     ports:
     - "3000:3000"
     depends_on:

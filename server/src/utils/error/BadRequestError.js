@@ -2,12 +2,12 @@ import ApplicationError from "./ApplicationError";
 
 export default class BadRequestError extends ApplicationError{
 
-    constructor(message){
+	constructor(message){
 
-        message = message || "Request contains incorrect syntax";
+		message = message || "Request contains incorrect syntax";
 
-        super(message, 400);
+		super(message, 400);
 
-    }
+	}
 
 }
