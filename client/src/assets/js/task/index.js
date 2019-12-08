@@ -1,15 +1,24 @@
-'use strict';
+"use strict";
 
-import {createTaskCheckboxElem} from './checkbox/index.js';
-import {createTaskTextElem} from './text/index.js';
+import createTaskCheckboxElem from "./checkbox/index.js";
+import createTaskValueElem from "./text/index.js";
+import createTaskRemoveButton from './removeButton/index.js'
 
+export default function(task) {
 
-export function createTaskElem(task) {
+    const taskElem = document.createElement("li");
+    taskElem.classList.add('taskContainer');
+    taskElem.setAttribute("id", task.id);
 
-    const taskElem = document.createElement('li');
-    taskElem.setAttribute( 'id', task.id );
-    taskElem.appendChild( createTaskCheckboxElem(task) );
-    taskElem.appendChild( createTaskTextElem(task) );
+    taskElem.appendChild(createTaskCheckboxElem(task,(e) => {
+
+    }));
+
+    taskElem.appendChild(createTaskValueElem(task));
+
+    taskElem.appendChild(createTaskRemoveButton((e) => {
+
+    }));
+
     return taskElem;
-
 }

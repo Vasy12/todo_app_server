@@ -1,11 +1,23 @@
 'use strict';
 
 
-export function createTaskCheckboxElem(task) {
-    const taskCheckBox = document.createElement('input');
-    taskCheckBox.setAttribute('type', "checkbox");
-    taskCheckBox.setAttribute('data-taskid', task.id);
-    return taskCheckBox;
+export default function(task, onChange) {
+
+    const checkMarkImage = document.createElement('img');
+    checkMarkImage.setAttribute('src', "./assets/img/icons/check.png");
+    checkMarkImage.setAttribute('alt', "X");
+
+    const inputCheckBox = document.createElement('input');
+    inputCheckBox.setAttribute('type', "checkbox");
+    inputCheckBox.checked = task.isDone;
+    inputCheckBox.onchange = onChange;
+
+    const labelElement = document.createElement('label');
+    labelElement.classList.add('checkMarkContainer');
+    labelElement.appendChild(inputCheckBox);
+    labelElement.appendChild(checkMarkImage);
+
+    return labelElement;
 }
 
 

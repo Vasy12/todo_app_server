@@ -7,7 +7,7 @@ import {
     tasksListElem,
 } from './controls/index.js';
 
-import {createTaskElem} from './task/index.js';
+import createTaskListItemElem from './task/index.js';
 
 
 let taskCounter = 0;
@@ -15,9 +15,16 @@ let taskCounter = 0;
 addTaskButtonElem.onclick = function (e) {
     const {value} = taskInputElem;
     if (value) {
-        tasksListElem.appendChild(createTaskElem({
+        tasksListElem.appendChild(createTaskListItemElem({
             id: ++taskCounter,
             value,
-        }))
+            isDone: Math.random() > 0.5,
+        }));
+        taskInputElem.value = "";
     }
+};
+
+
+resetInputButtonElem.onclick = function (e) {
+    taskInputElem.value = "";
 };
