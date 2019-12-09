@@ -11,7 +11,9 @@ export async function saveTask(req, res, next) {
 		if (newTask) {
 			return res.status(201).send(newTask);
 		}
+
 		next(new appError.BadRequestError());
+
 	} catch (e) {
 		res.send(e);
 	}
@@ -22,7 +24,9 @@ export async function saveTask(req, res, next) {
 export async function getAllTasks(req, res, next) {
 	try {
 
-		const tasks = await Task.findAll({});
+		const tasks = await Task.findAll({
+			order: [['createdAt','DESC']]
+		});
 
 		res.send(tasks);
 
