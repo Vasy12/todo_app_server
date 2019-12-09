@@ -6,6 +6,6 @@ export default function (req, res, next) {
 	if( req.taskId ){
 		return next();
 	}
-	next( new appError.BadRequestError());
+	next( new appError.BadRequestError() );
 
 }

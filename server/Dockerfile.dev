@@ -4,7 +4,6 @@ RUN mkdir server
 WORKDIR /server
 COPY package.json ./
 RUN npm install -g nodemon
-RUN npm install -g sequelize-cli
 
 RUN npm install
 

@@ -21,6 +21,7 @@ export async function saveTask(req, res, next) {
 
 export async function getAllTasks(req, res, next) {
 	try {
+
 		const tasks = await Task.findAll({});
 
 		res.send(tasks);
@@ -47,6 +48,7 @@ export async function updateTaskById(req, res, next) {
 export async function deleteTaskById(req, res, next) {
 	const {taskId} = req;
 	try {
+
 		const task = await Task.findByPk(taskId);
 		if (task) {
 			await task.destroy();

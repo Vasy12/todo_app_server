@@ -171,9 +171,7 @@ input {
 
 }
 
-.checkMarkContainer input {
-    display: none;
-}
+
 
 .checkMarkContainer img {
     position: absolute;
@@ -181,14 +179,9 @@ input {
     left: 60%;
     top: 20%;
     transform: translate(-40%, -50%);
-    display: none;
-
 }
 
-.checkMarkContainer input:checked + img {
-    display: block;
 
-}
 
 .taskValue {
     width: 100%;
