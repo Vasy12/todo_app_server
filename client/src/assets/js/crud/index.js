@@ -1,59 +1,32 @@
 import {serverIP, serverPort, tasksPath, taskPath} from "../constants/rest_path/index.js";
 
 
-export const getList = (fillList) => {
-    const request = new XMLHttpRequest();
-    request.open('GET', `http://${serverIP}:${serverPort}${tasksPath}`);
-
-    request.onload = function () {
-        const data = JSON.parse(this.responseText);
-        fillList(data)
-    };
-
-    request.send();
+export const getList = async () => {
+    const response = await fetch(`http://${serverIP}:${serverPort}${tasksPath}`);
+    return response.json();
 };
 
-export const createTask = (task, onCreate) => {
-    const request = new XMLHttpRequest();
-
-    request.open('POST', `http://${serverIP}:${serverPort}${taskPath}`);
-    request.setRequestHeader("Content-type", "application/json");
-
-    request.onload = function () {
-        const data = JSON.parse(this.responseText);
-        onCreate(data);
-    };
-
-    const body = JSON.stringify(task);
-
-    request.send(body);
+export const createTask = async (task) => {
+    const response = await fetch(`http://${serverIP}:${serverPort}${taskPath}`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json',},
+        body: JSON.stringify(task),
+    });
+    return response.json();
 };
 
-export const updateTask = (id, isDone, onUpdate) => {
-    const request = new XMLHttpRequest();
-
-    request.open('PUT', `http://${serverIP}:${serverPort}${taskPath}/${id}`);
-    request.setRequestHeader("Content-type", "application/json");
-
-    request.onload = function () {
-        const data = JSON.parse(this.responseText);
-        onUpdate(data);
-    };
-
-    const body = JSON.stringify({isDone: !isDone});
-
-    request.send(body);
+export const updateTask = async (id, isDone) => {
+    const response = await fetch(`http://${serverIP}:${serverPort}${taskPath}/${id}`, {
+        method: "PUT",
+        headers: {'Content-Type': 'application/json',},
+        body: JSON.stringify({isDone: !isDone}),
+    });
+    return response.json();
 };
 
-export const deleteTask = (id, onDelete) => {
-    const request = new XMLHttpRequest();
-
-    request.open('DELETE', `http://${serverIP}:${serverPort}${taskPath}/${id}`);
-
-    request.onload = function () {
-        const data = JSON.parse(this.responseText);
-        onDelete(data);
-    };
-
-    request.send();
+export const deleteTask = async (id) => {
+    const response = await fetch(`http://${serverIP}:${serverPort}${taskPath}/${id}`, {
+        method: 'DELETE',
+    });
+    return response.json();
 };
