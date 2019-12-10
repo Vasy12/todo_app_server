@@ -8,7 +8,7 @@ import {
 } from './controls/index.js';
 
 import createTaskListItemElem from './task/index.js';
-import {getList, createTask, deleteTask, updateTask} from "./crud/index.js";
+import {getTasks, createTask, deleteTask, updateTask} from "./crud/index.js";
 
 
 const addTask = task => createTaskListItemElem(task, onUpdateClick, onDeleteClick);
@@ -39,7 +39,7 @@ resetInputButtonElem.onclick = function (e) {
 };
 
 window.onload = async () => {
-    for (const task of await getList()) {
+    for (const task of await getTasks()) {
         tasksListElem.appendChild(addTask(task));
     }
 };

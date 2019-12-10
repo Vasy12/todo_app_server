@@ -6,19 +6,19 @@ const fetchJson = async (url, options) => {
     return response.json();
 };
 
-export const getList = () => fetchJson(`http://${serverIP}:${serverPort}${tasksPath}`);
+export const getTasks = () => fetchJson(`http://${serverIP}:${serverPort}${tasksPath}`);
 
 export const createTask = (task) =>
     fetchJson(`http://${serverIP}:${serverPort}${taskPath}`, {
         method: 'POST',
-        headers: {'Content-Type': 'application/json',},
+        headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(task),
     });
 
 export const updateTask = (id, isDone) =>
     fetchJson(`http://${serverIP}:${serverPort}${taskPath}/${id}`, {
         method: "PUT",
-        headers: {'Content-Type': 'application/json',},
+        headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({isDone: !isDone}),
     });
 
