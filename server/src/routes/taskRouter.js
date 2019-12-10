@@ -6,9 +6,13 @@ import * as validateTask from "../middlewares/task/validateTask";
 
 const taskRouter = express.Router();
 
-taskRouter.post("/task", validateTask.onCreateValidation, taskController.saveTask);
+taskRouter.post("/task",
+    validateTask.onCreateValidation,
+    taskController.saveTask
+);
 taskRouter.get("/tasks", taskController.getAllTasks);
-taskRouter.put("/task/:id", validateTask.onUpdateValidation, extractTaskId, taskController.updateTaskById);
+taskRouter.get("/task/:id",extractTaskId, taskController.getTaskById);
+taskRouter.put("/task/:id", extractTaskId, validateTask.onUpdateValidation,  taskController.updateTaskById);
 taskRouter.delete("/task/:id", extractTaskId, taskController.deleteTaskById);
 
 export default taskRouter;

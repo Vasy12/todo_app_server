@@ -37,6 +37,22 @@ export async function getAllTasks(req, res, next) {
 }
 
 
+export async function getTaskById(req, res, next) {
+	try{
+
+		const {taskId} = req;
+		const task = await Task.findByPk(taskId);
+		if(task){
+			res.send(task);
+			return;
+		}
+		next(new appError.ResourceNotFoundError());
+
+	}catch (e) {
+		next(e);
+	}
+}
+
 export async function updateTaskById(req, res, next) {
 
 	try {
