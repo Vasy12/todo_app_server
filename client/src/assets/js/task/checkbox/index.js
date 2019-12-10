@@ -7,6 +7,8 @@ export default function(task, onClick) {
 
     const checkBoxElem = document.createElement('div');
     checkBoxElem.classList.add('checkMarkContainer');
+    checkBoxElem.setAttribute('data-task-id', task.id);
+    checkBoxElem.setAttribute('data-task-is-done', task.isDone);
     checkBoxElem.onclick = onClick;
 
     if(task.isDone){
