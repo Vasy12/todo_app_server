@@ -10,7 +10,7 @@ import {
 } from './controls/index.js';
 
 import createTaskListItemElem from './task/index.js';
-import {getList, createTask, deleteTask, markTask} from "./crud/index.js";
+import {createTask, deleteTask, getList, markTask} from "./crud";
 
 
 const onClickMark = async (e) => {
