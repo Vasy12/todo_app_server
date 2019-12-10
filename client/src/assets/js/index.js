@@ -1,6 +1,5 @@
 'use strict';
 
-import * as restPath from './constants/rest_path/index.js'
 
 import {
     taskInputElem,
@@ -10,7 +9,7 @@ import {
 } from './controls/index.js';
 
 import createTaskListItemElem from './task/index.js';
-import {createTask, deleteTask, getList, markTask} from "./crud";
+import {createTask, deleteTask, getList, markTask} from "./crud/index.js";
 
 
 const onClickMark = async (e) => {

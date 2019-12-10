@@ -1,28 +1,33 @@
-import {serverIP, serverPort, tasksPath, taskPath} from "../constants/rest_path/index.js";
+import {host, serverPort, taskPath, tasksPath} from "../constants/rest_path/index.js";
 
-export const getList = () =>
-    fetch(`http://${serverIP}:${serverPort}${tasksPath}`)
-        .then(data => data.json());
+export const getList = async () => {
+    const response = await fetch(`http://${host}:${serverPort}${tasksPath}`);
+    const tasks = await response.json();
+    console.table(tasks);
+    return tasks;
+};
 
-export const createTask = (task) =>
-    fetch(`http://${serverIP}:${serverPort}${taskPath}`, {
+export const createTask = async (task) => {
+    const data = await fetch(`http://${host}:${serverPort}${taskPath}`, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-        },
+        headers: {'Content-Type': 'application/json;charset=utf-8'},
         body: JSON.stringify(task)
-    }).then(data => data.json());
+    });
+    return await data.json();
+};
 
-export const markTask = (id, currentIsDone) =>
-    fetch(`http://${serverIP}:${serverPort}${taskPath}/${id}`, {
+export const markTask = async (id, currentIsDone) => {
+    const data = await fetch(`http://${host}:${serverPort}${taskPath}/${id}`, {
         method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-        },
+        headers: {'Content-Type': 'application/json;charset=utf-8'},
         body: JSON.stringify({isDone: !currentIsDone})
-    }).then(data => data.json());
+    });
+    return await data.json();
+};
 
-export const deleteTask = (id) =>
-    fetch(`http://${serverIP}:${serverPort}${taskPath}/${id}`, {
+export const deleteTask = async (id) => {
+    const data = await fetch(`http://${host}:${serverPort}${taskPath}/${id}`, {
         method: 'DELETE',
-    }).then(data => data.json());
+    });
+    return await data.json();
+};
