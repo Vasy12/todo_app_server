@@ -1,5 +1,7 @@
 'use strict';
 
+import * as restPath from './constants/rest_path/index.js'
+
 import {
     taskInputElem,
     addTaskButtonElem,
