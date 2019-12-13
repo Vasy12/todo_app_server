@@ -14,6 +14,14 @@ module.exports = (sequelize, DataTypes) => {
 			defaultValue: false,
 			allowNull: false,
 		},
+		deadline: {
+			type: DataTypes.DATE,
+			allowNull: false,
+		},
+		files: {
+			type: DataTypes.ARRAY( DataTypes.STRING ),
+			allowNull: true,
+		},
 		value: {
 			type: DataTypes.STRING,
 			allowNull: false,
@@ -26,5 +34,11 @@ module.exports = (sequelize, DataTypes) => {
 		tableName: "Task",
 		timestamps: true,
 	});
+
+
+	Task.associate = function(models){
+		Task.belongsTo(models.User, {foreignKey: "userId", sourceKey: "id", as: "user"})
+	};
+
 	return Task;
 };
